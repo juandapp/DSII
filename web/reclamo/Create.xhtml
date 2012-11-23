@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateReclamoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateReclamoLabel_ticketReclamo}" for="ticketReclamo" />
+                    <h:inputText id="ticketReclamo" value="#{reclamoController.selected.ticketReclamo}" title="#{bundle.CreateReclamoTitle_ticketReclamo}" required="true" requiredMessage="#{bundle.CreateReclamoRequiredMessage_ticketReclamo}"/>
+                    <h:outputLabel value="#{bundle.CreateReclamoLabel_motivoReclamo}" for="motivoReclamo" />
+                    <h:inputText id="motivoReclamo" value="#{reclamoController.selected.motivoReclamo}" title="#{bundle.CreateReclamoTitle_motivoReclamo}" />
+                    <h:outputLabel value="#{bundle.CreateReclamoLabel_descripcionReclamo}" for="descripcionReclamo" />
+                    <h:inputText id="descripcionReclamo" value="#{reclamoController.selected.descripcionReclamo}" title="#{bundle.CreateReclamoTitle_descripcionReclamo}" />
+                    <h:outputLabel value="#{bundle.CreateReclamoLabel_solucionReclamo}" for="solucionReclamo" />
+                    <h:inputText id="solucionReclamo" value="#{reclamoController.selected.solucionReclamo}" title="#{bundle.CreateReclamoTitle_solucionReclamo}" />
+                    <h:outputLabel value="#{bundle.CreateReclamoLabel_estadoReclamo}" for="estadoReclamo" />
+                    <h:inputText id="estadoReclamo" value="#{reclamoController.selected.estadoReclamo}" title="#{bundle.CreateReclamoTitle_estadoReclamo}" />
+                    <h:outputLabel value="#{bundle.CreateReclamoLabel_fechaReclamo}" for="fechaReclamo" />
+                    <h:inputText id="fechaReclamo" value="#{reclamoController.selected.fechaReclamo}" title="#{bundle.CreateReclamoTitle_fechaReclamo}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateReclamoLabel_identificacionPasajero}" for="identificacionPasajero" />
+                    <h:selectOneMenu id="identificacionPasajero" value="#{reclamoController.selected.identificacionPasajero}" title="#{bundle.CreateReclamoTitle_identificacionPasajero}" >
+                        <f:selectItems value="#{pasajeroController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateReclamoLabel_identificacionAuxservicio}" for="identificacionAuxservicio" />
+                    <h:selectOneMenu id="identificacionAuxservicio" value="#{reclamoController.selected.identificacionAuxservicio}" title="#{bundle.CreateReclamoTitle_identificacionAuxservicio}" >
+                        <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{reclamoController.create}" value="#{bundle.CreateReclamoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{reclamoController.prepareList}" value="#{bundle.CreateReclamoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateReclamoIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

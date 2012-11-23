@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPasajeroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPasajeroLabel_identificacionPasajero}" for="identificacionPasajero" />
+                    <h:inputText id="identificacionPasajero" value="#{pasajeroController.selected.identificacionPasajero}" title="#{bundle.EditPasajeroTitle_identificacionPasajero}" required="true" requiredMessage="#{bundle.EditPasajeroRequiredMessage_identificacionPasajero}"/>
+                    <h:outputLabel value="#{bundle.EditPasajeroLabel_nombrePasajero}" for="nombrePasajero" />
+                    <h:inputText id="nombrePasajero" value="#{pasajeroController.selected.nombrePasajero}" title="#{bundle.EditPasajeroTitle_nombrePasajero}" />
+                    <h:outputLabel value="#{bundle.EditPasajeroLabel_direccionPasajero}" for="direccionPasajero" />
+                    <h:inputText id="direccionPasajero" value="#{pasajeroController.selected.direccionPasajero}" title="#{bundle.EditPasajeroTitle_direccionPasajero}" />
+                    <h:outputLabel value="#{bundle.EditPasajeroLabel_telefonoPasajero}" for="telefonoPasajero" />
+                    <h:inputText id="telefonoPasajero" value="#{pasajeroController.selected.telefonoPasajero}" title="#{bundle.EditPasajeroTitle_telefonoPasajero}" />
+                    <h:outputLabel value="#{bundle.EditPasajeroLabel_emailPasajero}" for="emailPasajero" />
+                    <h:inputText id="emailPasajero" value="#{pasajeroController.selected.emailPasajero}" title="#{bundle.EditPasajeroTitle_emailPasajero}" />
+                </h:panelGrid>
+                <h:commandLink action="#{pasajeroController.update}" value="#{bundle.EditPasajeroSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditPasajeroViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{pasajeroController.prepareList}" value="#{bundle.EditPasajeroShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditPasajeroIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

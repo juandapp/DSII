@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewReclamoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewReclamoLabel_ticketReclamo}"/>
+                    <h:outputText value="#{reclamoController.selected.ticketReclamo}" title="#{bundle.ViewReclamoTitle_ticketReclamo}"/>
+                    <h:outputText value="#{bundle.ViewReclamoLabel_motivoReclamo}"/>
+                    <h:outputText value="#{reclamoController.selected.motivoReclamo}" title="#{bundle.ViewReclamoTitle_motivoReclamo}"/>
+                    <h:outputText value="#{bundle.ViewReclamoLabel_descripcionReclamo}"/>
+                    <h:outputText value="#{reclamoController.selected.descripcionReclamo}" title="#{bundle.ViewReclamoTitle_descripcionReclamo}"/>
+                    <h:outputText value="#{bundle.ViewReclamoLabel_solucionReclamo}"/>
+                    <h:outputText value="#{reclamoController.selected.solucionReclamo}" title="#{bundle.ViewReclamoTitle_solucionReclamo}"/>
+                    <h:outputText value="#{bundle.ViewReclamoLabel_estadoReclamo}"/>
+                    <h:outputText value="#{reclamoController.selected.estadoReclamo}" title="#{bundle.ViewReclamoTitle_estadoReclamo}"/>
+                    <h:outputText value="#{bundle.ViewReclamoLabel_fechaReclamo}"/>
+                    <h:outputText value="#{reclamoController.selected.fechaReclamo}" title="#{bundle.ViewReclamoTitle_fechaReclamo}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewReclamoLabel_identificacionPasajero}"/>
+                    <h:outputText value="#{reclamoController.selected.identificacionPasajero}" title="#{bundle.ViewReclamoTitle_identificacionPasajero}"/>
+                    <h:outputText value="#{bundle.ViewReclamoLabel_identificacionAuxservicio}"/>
+                    <h:outputText value="#{reclamoController.selected.identificacionAuxservicio}" title="#{bundle.ViewReclamoTitle_identificacionAuxservicio}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{reclamoController.destroyAndView}" value="#{bundle.ViewReclamoDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewReclamoEditLink}"/>
+                <br />
+                <h:commandLink action="#{reclamoController.prepareCreate}" value="#{bundle.ViewReclamoCreateLink}" />
+                <br />
+                <h:commandLink action="#{reclamoController.prepareList}" value="#{bundle.ViewReclamoShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewReclamoIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEstacionAuxservicioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEstacionAuxservicioLabel_estacionAuxservicioPK_fecha}" for="estacionAuxservicioPK_fecha" />
+                    <h:inputText id="estacionAuxservicioPK_fecha" value="#{estacionAuxservicioController.selected.estacionAuxservicioPK.fecha}" title="#{bundle.EditEstacionAuxservicioTitle_estacionAuxservicioPK_fecha}" required="true" requiredMessage="#{bundle.EditEstacionAuxservicioRequiredMessage_estacionAuxservicioPK_fecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditEstacionAuxservicioLabel_estacion}" for="estacion" />
+                    <h:selectOneMenu id="estacion" value="#{estacionAuxservicioController.selected.estacion}" title="#{bundle.EditEstacionAuxservicioTitle_estacion}" required="true" requiredMessage="#{bundle.EditEstacionAuxservicioRequiredMessage_estacion}">
+                        <f:selectItems value="#{estacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEstacionAuxservicioLabel_empleado}" for="empleado" />
+                    <h:selectOneMenu id="empleado" value="#{estacionAuxservicioController.selected.empleado}" title="#{bundle.EditEstacionAuxservicioTitle_empleado}" required="true" requiredMessage="#{bundle.EditEstacionAuxservicioRequiredMessage_empleado}">
+                        <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{estacionAuxservicioController.update}" value="#{bundle.EditEstacionAuxservicioSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditEstacionAuxservicioViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{estacionAuxservicioController.prepareList}" value="#{bundle.EditEstacionAuxservicioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditEstacionAuxservicioIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

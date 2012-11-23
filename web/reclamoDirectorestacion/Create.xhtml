@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateReclamoDirectorestacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateReclamoDirectorestacionLabel_fechaSolucion}" for="fechaSolucion" />
+                    <h:inputText id="fechaSolucion" value="#{reclamoDirectorestacionController.selected.fechaSolucion}" title="#{bundle.CreateReclamoDirectorestacionTitle_fechaSolucion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateReclamoDirectorestacionLabel_reclamo}" for="reclamo" />
+                    <h:selectOneMenu id="reclamo" value="#{reclamoDirectorestacionController.selected.reclamo}" title="#{bundle.CreateReclamoDirectorestacionTitle_reclamo}" required="true" requiredMessage="#{bundle.CreateReclamoDirectorestacionRequiredMessage_reclamo}">
+                        <f:selectItems value="#{reclamoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateReclamoDirectorestacionLabel_empleado}" for="empleado" />
+                    <h:selectOneMenu id="empleado" value="#{reclamoDirectorestacionController.selected.empleado}" title="#{bundle.CreateReclamoDirectorestacionTitle_empleado}" required="true" requiredMessage="#{bundle.CreateReclamoDirectorestacionRequiredMessage_empleado}">
+                        <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{reclamoDirectorestacionController.create}" value="#{bundle.CreateReclamoDirectorestacionSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{reclamoDirectorestacionController.prepareList}" value="#{bundle.CreateReclamoDirectorestacionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateReclamoDirectorestacionIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

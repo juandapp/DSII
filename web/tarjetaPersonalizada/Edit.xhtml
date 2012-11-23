@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTarjetaPersonalizadaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTarjetaPersonalizadaLabel_pinPersonalizada}" for="pinPersonalizada" />
+                    <h:inputText id="pinPersonalizada" value="#{tarjetaPersonalizadaController.selected.pinPersonalizada}" title="#{bundle.EditTarjetaPersonalizadaTitle_pinPersonalizada}" required="true" requiredMessage="#{bundle.EditTarjetaPersonalizadaRequiredMessage_pinPersonalizada}"/>
+                    <h:outputLabel value="#{bundle.EditTarjetaPersonalizadaLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{tarjetaPersonalizadaController.selected.fecha}" title="#{bundle.EditTarjetaPersonalizadaTitle_fecha}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditTarjetaPersonalizadaLabel_costo}" for="costo" />
+                    <h:inputText id="costo" value="#{tarjetaPersonalizadaController.selected.costo}" title="#{bundle.EditTarjetaPersonalizadaTitle_costo}" />
+                    <h:outputLabel value="#{bundle.EditTarjetaPersonalizadaLabel_tarjeta}" for="tarjeta" />
+                    <h:selectOneMenu id="tarjeta" value="#{tarjetaPersonalizadaController.selected.tarjeta}" title="#{bundle.EditTarjetaPersonalizadaTitle_tarjeta}" required="true" requiredMessage="#{bundle.EditTarjetaPersonalizadaRequiredMessage_tarjeta}">
+                        <f:selectItems value="#{tarjetaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTarjetaPersonalizadaLabel_identificacionPasajero}" for="identificacionPasajero" />
+                    <h:selectOneMenu id="identificacionPasajero" value="#{tarjetaPersonalizadaController.selected.identificacionPasajero}" title="#{bundle.EditTarjetaPersonalizadaTitle_identificacionPasajero}" >
+                        <f:selectItems value="#{pasajeroController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTarjetaPersonalizadaLabel_identificacionAuxservicio}" for="identificacionAuxservicio" />
+                    <h:selectOneMenu id="identificacionAuxservicio" value="#{tarjetaPersonalizadaController.selected.identificacionAuxservicio}" title="#{bundle.EditTarjetaPersonalizadaTitle_identificacionAuxservicio}" >
+                        <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{tarjetaPersonalizadaController.update}" value="#{bundle.EditTarjetaPersonalizadaSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditTarjetaPersonalizadaViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{tarjetaPersonalizadaController.prepareList}" value="#{bundle.EditTarjetaPersonalizadaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditTarjetaPersonalizadaIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

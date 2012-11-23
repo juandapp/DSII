@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListConductorBusTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListConductorBusEmpty}" rendered="#{conductorBusController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{conductorBusController.items.rowCount > 0}">
+                    <h:outputText value="#{conductorBusController.pagination.pageFirstItem + 1}..#{conductorBusController.pagination.pageLastItem + 1}/#{conductorBusController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{conductorBusController.previous}" value="#{bundle.Previous} #{conductorBusController.pagination.pageSize}" rendered="#{conductorBusController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{conductorBusController.next}" value="#{bundle.Next} #{conductorBusController.pagination.pageSize}" rendered="#{conductorBusController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{conductorBusController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConductorBusTitle_conductorBusPK_fecha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.conductorBusPK.fecha}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConductorBusTitle_horario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.horario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConductorBusTitle_empleado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.empleado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConductorBusTitle_bus}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.bus}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{conductorBusController.prepareView}" value="#{bundle.ListConductorBusViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{conductorBusController.prepareEdit}" value="#{bundle.ListConductorBusEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{conductorBusController.destroy}" value="#{bundle.ListConductorBusDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{conductorBusController.prepareCreate}" value="#{bundle.ListConductorBusCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListConductorBusIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

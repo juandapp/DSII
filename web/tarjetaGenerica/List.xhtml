@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTarjetaGenericaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListTarjetaGenericaEmpty}" rendered="#{tarjetaGenericaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{tarjetaGenericaController.items.rowCount > 0}">
+                    <h:outputText value="#{tarjetaGenericaController.pagination.pageFirstItem + 1}..#{tarjetaGenericaController.pagination.pageLastItem + 1}/#{tarjetaGenericaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{tarjetaGenericaController.previous}" value="#{bundle.Previous} #{tarjetaGenericaController.pagination.pageSize}" rendered="#{tarjetaGenericaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{tarjetaGenericaController.next}" value="#{bundle.Next} #{tarjetaGenericaController.pagination.pageSize}" rendered="#{tarjetaGenericaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{tarjetaGenericaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTarjetaGenericaTitle_pinGenerica}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pinGenerica}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTarjetaGenericaTitle_tarjeta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tarjeta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{tarjetaGenericaController.prepareView}" value="#{bundle.ListTarjetaGenericaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tarjetaGenericaController.prepareEdit}" value="#{bundle.ListTarjetaGenericaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tarjetaGenericaController.destroy}" value="#{bundle.ListTarjetaGenericaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{tarjetaGenericaController.prepareCreate}" value="#{bundle.ListTarjetaGenericaCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListTarjetaGenericaIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

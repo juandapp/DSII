@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTarjetaEstacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTarjetaEstacionLabel_tarjetaEstacionPK_hora}" for="tarjetaEstacionPK_hora" />
+                    <h:inputText id="tarjetaEstacionPK_hora" value="#{tarjetaEstacionController.selected.tarjetaEstacionPK.hora}" title="#{bundle.CreateTarjetaEstacionTitle_tarjetaEstacionPK_hora}" required="true" requiredMessage="#{bundle.CreateTarjetaEstacionRequiredMessage_tarjetaEstacionPK_hora}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateTarjetaEstacionLabel_tarjetaEstacionPK_fecha}" for="tarjetaEstacionPK_fecha" />
+                    <h:inputText id="tarjetaEstacionPK_fecha" value="#{tarjetaEstacionController.selected.tarjetaEstacionPK.fecha}" title="#{bundle.CreateTarjetaEstacionTitle_tarjetaEstacionPK_fecha}" required="true" requiredMessage="#{bundle.CreateTarjetaEstacionRequiredMessage_tarjetaEstacionPK_fecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateTarjetaEstacionLabel_tarjeta}" for="tarjeta" />
+                    <h:selectOneMenu id="tarjeta" value="#{tarjetaEstacionController.selected.tarjeta}" title="#{bundle.CreateTarjetaEstacionTitle_tarjeta}" required="true" requiredMessage="#{bundle.CreateTarjetaEstacionRequiredMessage_tarjeta}">
+                        <f:selectItems value="#{tarjetaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateTarjetaEstacionLabel_estacion}" for="estacion" />
+                    <h:selectOneMenu id="estacion" value="#{tarjetaEstacionController.selected.estacion}" title="#{bundle.CreateTarjetaEstacionTitle_estacion}" required="true" requiredMessage="#{bundle.CreateTarjetaEstacionRequiredMessage_estacion}">
+                        <f:selectItems value="#{estacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tarjetaEstacionController.create}" value="#{bundle.CreateTarjetaEstacionSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tarjetaEstacionController.prepareList}" value="#{bundle.CreateTarjetaEstacionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateTarjetaEstacionIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

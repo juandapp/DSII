@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewBusTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewBusLabel_numerochasisBus}"/>
+                    <h:outputText value="#{busController.selected.numerochasisBus}" title="#{bundle.ViewBusTitle_numerochasisBus}"/>
+                    <h:outputText value="#{bundle.ViewBusLabel_placaBus}"/>
+                    <h:outputText value="#{busController.selected.placaBus}" title="#{bundle.ViewBusTitle_placaBus}"/>
+                    <h:outputText value="#{bundle.ViewBusLabel_numeropasajerosBus}"/>
+                    <h:outputText value="#{busController.selected.numeropasajerosBus}" title="#{bundle.ViewBusTitle_numeropasajerosBus}"/>
+                    <h:outputText value="#{bundle.ViewBusLabel_tipoBus}"/>
+                    <h:outputText value="#{busController.selected.tipoBus}" title="#{bundle.ViewBusTitle_tipoBus}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{busController.destroyAndView}" value="#{bundle.ViewBusDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewBusEditLink}"/>
+                <br />
+                <h:commandLink action="#{busController.prepareCreate}" value="#{bundle.ViewBusCreateLink}" />
+                <br />
+                <h:commandLink action="#{busController.prepareList}" value="#{bundle.ViewBusShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewBusIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

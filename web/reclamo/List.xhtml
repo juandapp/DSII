@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListReclamoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListReclamoEmpty}" rendered="#{reclamoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{reclamoController.items.rowCount > 0}">
+                    <h:outputText value="#{reclamoController.pagination.pageFirstItem + 1}..#{reclamoController.pagination.pageLastItem + 1}/#{reclamoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{reclamoController.previous}" value="#{bundle.Previous} #{reclamoController.pagination.pageSize}" rendered="#{reclamoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{reclamoController.next}" value="#{bundle.Next} #{reclamoController.pagination.pageSize}" rendered="#{reclamoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{reclamoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReclamoTitle_ticketReclamo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ticketReclamo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReclamoTitle_motivoReclamo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.motivoReclamo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReclamoTitle_descripcionReclamo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcionReclamo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReclamoTitle_solucionReclamo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.solucionReclamo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReclamoTitle_estadoReclamo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estadoReclamo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReclamoTitle_fechaReclamo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaReclamo}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReclamoTitle_identificacionPasajero}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.identificacionPasajero}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReclamoTitle_identificacionAuxservicio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.identificacionAuxservicio}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{reclamoController.prepareView}" value="#{bundle.ListReclamoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{reclamoController.prepareEdit}" value="#{bundle.ListReclamoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{reclamoController.destroy}" value="#{bundle.ListReclamoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{reclamoController.prepareCreate}" value="#{bundle.ListReclamoCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListReclamoIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

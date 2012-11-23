@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTarjetaEstacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListTarjetaEstacionEmpty}" rendered="#{tarjetaEstacionController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{tarjetaEstacionController.items.rowCount > 0}">
+                    <h:outputText value="#{tarjetaEstacionController.pagination.pageFirstItem + 1}..#{tarjetaEstacionController.pagination.pageLastItem + 1}/#{tarjetaEstacionController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{tarjetaEstacionController.previous}" value="#{bundle.Previous} #{tarjetaEstacionController.pagination.pageSize}" rendered="#{tarjetaEstacionController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{tarjetaEstacionController.next}" value="#{bundle.Next} #{tarjetaEstacionController.pagination.pageSize}" rendered="#{tarjetaEstacionController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{tarjetaEstacionController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTarjetaEstacionTitle_tarjetaEstacionPK_hora}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tarjetaEstacionPK.hora}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTarjetaEstacionTitle_tarjetaEstacionPK_fecha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tarjetaEstacionPK.fecha}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTarjetaEstacionTitle_tarjeta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tarjeta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTarjetaEstacionTitle_estacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{tarjetaEstacionController.prepareView}" value="#{bundle.ListTarjetaEstacionViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tarjetaEstacionController.prepareEdit}" value="#{bundle.ListTarjetaEstacionEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tarjetaEstacionController.destroy}" value="#{bundle.ListTarjetaEstacionDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{tarjetaEstacionController.prepareCreate}" value="#{bundle.ListTarjetaEstacionCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListTarjetaEstacionIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

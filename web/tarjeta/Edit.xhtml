@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTarjetaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTarjetaLabel_pinTarjeta}" for="pinTarjeta" />
+                    <h:inputText id="pinTarjeta" value="#{tarjetaController.selected.pinTarjeta}" title="#{bundle.EditTarjetaTitle_pinTarjeta}" required="true" requiredMessage="#{bundle.EditTarjetaRequiredMessage_pinTarjeta}"/>
+                    <h:outputLabel value="#{bundle.EditTarjetaLabel_saldo}" for="saldo" />
+                    <h:inputText id="saldo" value="#{tarjetaController.selected.saldo}" title="#{bundle.EditTarjetaTitle_saldo}" />
+                    <h:outputLabel value="#{bundle.EditTarjetaLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{tarjetaController.selected.estado}" title="#{bundle.EditTarjetaTitle_estado}" />
+                    <h:outputLabel value="#{bundle.EditTarjetaLabel_tarjetaPersonalizada}" for="tarjetaPersonalizada" />
+                    <h:selectOneMenu id="tarjetaPersonalizada" value="#{tarjetaController.selected.tarjetaPersonalizada}" title="#{bundle.EditTarjetaTitle_tarjetaPersonalizada}" >
+                        <f:selectItems value="#{tarjetaPersonalizadaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTarjetaLabel_tarjetaGenerica}" for="tarjetaGenerica" />
+                    <h:selectOneMenu id="tarjetaGenerica" value="#{tarjetaController.selected.tarjetaGenerica}" title="#{bundle.EditTarjetaTitle_tarjetaGenerica}" >
+                        <f:selectItems value="#{tarjetaGenericaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{tarjetaController.update}" value="#{bundle.EditTarjetaSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditTarjetaViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{tarjetaController.prepareList}" value="#{bundle.EditTarjetaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditTarjetaIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListBusRutaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListBusRutaEmpty}" rendered="#{busRutaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{busRutaController.items.rowCount > 0}">
+                    <h:outputText value="#{busRutaController.pagination.pageFirstItem + 1}..#{busRutaController.pagination.pageLastItem + 1}/#{busRutaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{busRutaController.previous}" value="#{bundle.Previous} #{busRutaController.pagination.pageSize}" rendered="#{busRutaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{busRutaController.next}" value="#{bundle.Next} #{busRutaController.pagination.pageSize}" rendered="#{busRutaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{busRutaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBusRutaTitle_busRutaPK_fecha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.busRutaPK.fecha}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBusRutaTitle_ruta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ruta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBusRutaTitle_bus}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.bus}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{busRutaController.prepareView}" value="#{bundle.ListBusRutaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{busRutaController.prepareEdit}" value="#{bundle.ListBusRutaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{busRutaController.destroy}" value="#{bundle.ListBusRutaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{busRutaController.prepareCreate}" value="#{bundle.ListBusRutaCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListBusRutaIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

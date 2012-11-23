@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditBusRutaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditBusRutaLabel_busRutaPK_fecha}" for="busRutaPK_fecha" />
+                    <h:inputText id="busRutaPK_fecha" value="#{busRutaController.selected.busRutaPK.fecha}" title="#{bundle.EditBusRutaTitle_busRutaPK_fecha}" required="true" requiredMessage="#{bundle.EditBusRutaRequiredMessage_busRutaPK_fecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditBusRutaLabel_ruta}" for="ruta" />
+                    <h:selectOneMenu id="ruta" value="#{busRutaController.selected.ruta}" title="#{bundle.EditBusRutaTitle_ruta}" required="true" requiredMessage="#{bundle.EditBusRutaRequiredMessage_ruta}">
+                        <f:selectItems value="#{rutaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditBusRutaLabel_bus}" for="bus" />
+                    <h:selectOneMenu id="bus" value="#{busRutaController.selected.bus}" title="#{bundle.EditBusRutaTitle_bus}" required="true" requiredMessage="#{bundle.EditBusRutaRequiredMessage_bus}">
+                        <f:selectItems value="#{busController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{busRutaController.update}" value="#{bundle.EditBusRutaSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditBusRutaViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{busRutaController.prepareList}" value="#{bundle.EditBusRutaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditBusRutaIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

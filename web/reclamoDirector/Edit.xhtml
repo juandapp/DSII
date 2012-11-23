@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditReclamoDirectorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditReclamoDirectorLabel_reclamoDirectorPK_ticketReclamo}" for="reclamoDirectorPK_ticketReclamo" />
+                    <h:inputText id="reclamoDirectorPK_ticketReclamo" value="#{reclamoDirectorController.selected.reclamoDirectorPK.ticketReclamo}" title="#{bundle.EditReclamoDirectorTitle_reclamoDirectorPK_ticketReclamo}" required="true" requiredMessage="#{bundle.EditReclamoDirectorRequiredMessage_reclamoDirectorPK_ticketReclamo}"/>
+                    <h:outputLabel value="#{bundle.EditReclamoDirectorLabel_reclamoDirectorPK_identificacionDirectorestacion}" for="reclamoDirectorPK_identificacionDirectorestacion" />
+                    <h:inputText id="reclamoDirectorPK_identificacionDirectorestacion" value="#{reclamoDirectorController.selected.reclamoDirectorPK.identificacionDirectorestacion}" title="#{bundle.EditReclamoDirectorTitle_reclamoDirectorPK_identificacionDirectorestacion}" required="true" requiredMessage="#{bundle.EditReclamoDirectorRequiredMessage_reclamoDirectorPK_identificacionDirectorestacion}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{reclamoDirectorController.update}" value="#{bundle.EditReclamoDirectorSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditReclamoDirectorViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{reclamoDirectorController.prepareList}" value="#{bundle.EditReclamoDirectorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditReclamoDirectorIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

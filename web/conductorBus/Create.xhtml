@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateConductorBusTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateConductorBusLabel_conductorBusPK_fecha}" for="conductorBusPK_fecha" />
+                    <h:inputText id="conductorBusPK_fecha" value="#{conductorBusController.selected.conductorBusPK.fecha}" title="#{bundle.CreateConductorBusTitle_conductorBusPK_fecha}" required="true" requiredMessage="#{bundle.CreateConductorBusRequiredMessage_conductorBusPK_fecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateConductorBusLabel_horario}" for="horario" />
+                    <h:inputText id="horario" value="#{conductorBusController.selected.horario}" title="#{bundle.CreateConductorBusTitle_horario}" />
+                    <h:outputLabel value="#{bundle.CreateConductorBusLabel_empleado}" for="empleado" />
+                    <h:selectOneMenu id="empleado" value="#{conductorBusController.selected.empleado}" title="#{bundle.CreateConductorBusTitle_empleado}" required="true" requiredMessage="#{bundle.CreateConductorBusRequiredMessage_empleado}">
+                        <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateConductorBusLabel_bus}" for="bus" />
+                    <h:selectOneMenu id="bus" value="#{conductorBusController.selected.bus}" title="#{bundle.CreateConductorBusTitle_bus}" required="true" requiredMessage="#{bundle.CreateConductorBusRequiredMessage_bus}">
+                        <f:selectItems value="#{busController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{conductorBusController.create}" value="#{bundle.CreateConductorBusSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{conductorBusController.prepareList}" value="#{bundle.CreateConductorBusShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateConductorBusIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
