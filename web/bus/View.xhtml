@@ -25,17 +25,14 @@
                     <h:outputText value="#{busController.selected.tipoBus}" title="#{bundle.ViewBusTitle_tipoBus}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{busController.destroyAndView}" value="#{bundle.ViewBusDestroyLink}"/>
+                <h:commandButton action="Edit" value="#{bundle.ViewBusEditLink}"/>
+                <br />
+                <h:commandButton action="#{busController.prepareCreate}" value="#{bundle.ViewBusCreateLink}" />
+                <br />
+                <h:commandButton action="#{busController.prepareList}" value="#{bundle.ViewBusShowAllLink}"/>
                 <br />
                 <br />
-                <h:commandLink action="Edit" value="#{bundle.ViewBusEditLink}"/>
-                <br />
-                <h:commandLink action="#{busController.prepareCreate}" value="#{bundle.ViewBusCreateLink}" />
-                <br />
-                <h:commandLink action="#{busController.prepareList}" value="#{bundle.ViewBusShowAllLink}"/>
-                <br />
-                <br />
-                <h:commandLink value="#{bundle.ViewBusIndexLink}" action="/index" immediate="true" />
+                <h:commandButton value="#{bundle.ViewBusIndexLink}" action="/index" immediate="true" />
 
             </h:form>
         </ui:define>

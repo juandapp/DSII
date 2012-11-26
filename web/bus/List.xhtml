@@ -7,7 +7,7 @@
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundle.ListBusTitle}"></h:outputText>
+            <h:outputText value="Listado de buses"></h:outputText>
         </ui:define>
         <ui:define name="body">
             <h:form styleClass="jsfcrud_list_form">
@@ -17,8 +17,8 @@
                 <h:outputText escape="false" value="#{bundle.ListBusEmpty}" rendered="#{busController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{busController.items.rowCount > 0}">
                     <h:outputText value="#{busController.pagination.pageFirstItem + 1}..#{busController.pagination.pageLastItem + 1}/#{busController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{busController.previous}" value="#{bundle.Previous} #{busController.pagination.pageSize}" rendered="#{busController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{busController.next}" value="#{bundle.Next} #{busController.pagination.pageSize}" rendered="#{busController.pagination.hasNextPage}"/>&nbsp;
+                    <h:commandButton action="#{busController.previous}" value="#{bundle.Previous} #{busController.pagination.pageSize}" rendered="#{busController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandButton action="#{busController.next}" value="#{bundle.Next} #{busController.pagination.pageSize}" rendered="#{busController.pagination.hasNextPage}"/>&nbsp;
                     <h:dataTable value="#{busController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
@@ -48,19 +48,18 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{busController.prepareView}" value="#{bundle.ListBusViewLink}"/>
+                            <h:commandButton action="#{busController.prepareView}" value="#{bundle.ListBusViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{busController.prepareEdit}" value="#{bundle.ListBusEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{busController.destroy}" value="#{bundle.ListBusDestroyLink}"/>
+                            <h:commandButton action="#{busController.prepareEdit}" value="#{bundle.ListBusEditLink}"/>
+                            <h:outputText value=" "/>                           
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{busController.prepareCreate}" value="#{bundle.ListBusCreateLink}"/>
+                <h:commandButton action="#{busController.prepareCreate}" value="#{bundle.ListBusCreateLink}"/>
                 <br />
                 <br />
-                <h:commandLink value="#{bundle.ListBusIndexLink}" action="/index" immediate="true" />
+                <h:commandButton value="#{bundle.ListBusIndexLink}" action="/index" immediate="true" />
             </h:form>
         </ui:define>
     </ui:composition>
