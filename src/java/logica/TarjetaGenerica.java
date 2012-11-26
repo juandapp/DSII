@@ -77,7 +77,7 @@ public class TarjetaGenerica implements Serializable {
 
     @Override
     public String toString() {
-        return "logica.TarjetaGenerica[ pinGenerica=" + pinGenerica + " ]";
+        return pinGenerica;
     }
     
 }

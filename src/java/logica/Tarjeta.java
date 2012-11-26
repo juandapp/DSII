@@ -133,7 +133,7 @@ public class Tarjeta implements Serializable {
 
     @Override
     public String toString() {
-        return "logica.Tarjeta[ pinTarjeta=" + pinTarjeta + " ]";
+        return pinTarjeta ;
     }
     
 }

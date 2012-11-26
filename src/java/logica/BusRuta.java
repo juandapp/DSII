@@ -89,7 +89,7 @@ public class BusRuta implements Serializable {
 
     @Override
     public String toString() {
-        return "logica.BusRuta[ busRutaPK=" + busRutaPK + " ]";
+        return busRutaPK+" PK....";
     }
     
 }

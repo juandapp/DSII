@@ -162,7 +162,7 @@ public class Reclamo implements Serializable {
 
     @Override
     public String toString() {
-        return "logica.Reclamo[ ticketReclamo=" + ticketReclamo + " ]";
+        return ticketReclamo;
     }
     
 }

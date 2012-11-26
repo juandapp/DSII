@@ -113,7 +113,7 @@ public class Estacion implements Serializable {
 
     @Override
     public String toString() {
-        return "logica.Estacion[ nombreEstacion=" + nombreEstacion + " ]";
+        return nombreEstacion;
     }
     
 }

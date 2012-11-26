@@ -123,7 +123,7 @@ public class TarjetaPersonalizada implements Serializable {
 
     @Override
     public String toString() {
-        return "logica.TarjetaPersonalizada[ pinPersonalizada=" + pinPersonalizada + " ]";
+        return pinPersonalizada;
     }
     
 }

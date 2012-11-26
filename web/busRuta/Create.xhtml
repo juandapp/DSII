@@ -17,7 +17,7 @@
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateBusRutaLabel_busRutaPK_fecha}" for="busRutaPK_fecha" />
                     <h:inputText id="busRutaPK_fecha" value="#{busRutaController.selected.busRutaPK.fecha}" title="#{bundle.CreateBusRutaTitle_busRutaPK_fecha}" required="true" requiredMessage="#{bundle.CreateBusRutaRequiredMessage_busRutaPK_fecha}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
                     </h:inputText>
                     <h:outputLabel value="#{bundle.CreateBusRutaLabel_ruta}" for="ruta" />
                     <h:selectOneMenu id="ruta" value="#{busRutaController.selected.ruta}" title="#{bundle.CreateBusRutaTitle_ruta}" required="true" requiredMessage="#{bundle.CreateBusRutaRequiredMessage_ruta}">

@@ -103,7 +103,7 @@ public class Ruta implements Serializable {
 
     @Override
     public String toString() {
-        return "logica.Ruta[ nombreRuta=" + nombreRuta + " ]";
+        return nombreRuta;
     }
     
 }

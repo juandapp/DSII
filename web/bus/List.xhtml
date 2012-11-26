@@ -16,7 +16,7 @@
                 </h:panelGroup>
                 <h:outputText escape="false" value="#{bundle.ListBusEmpty}" rendered="#{busController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{busController.items.rowCount > 0}">
-                    <h:outputText value="#{busController.pagination.pageFirstItem + 1}..#{busController.pagination.pageLastItem + 1}/#{busController.pagination.itemsCount}"/>&nbsp;
+                    <!--<h:outputText value="#{busController.pagination.pageFirstItem + 1}..#{busController.pagination.pageLastItem + 1}/#{busController.pagination.itemsCount}"/>&nbsp;-->
                     <h:commandButton action="#{busController.previous}" value="#{bundle.Previous} #{busController.pagination.pageSize}" rendered="#{busController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandButton action="#{busController.next}" value="#{bundle.Next} #{busController.pagination.pageSize}" rendered="#{busController.pagination.hasNextPage}"/>&nbsp;
                     <h:dataTable value="#{busController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">

@@ -126,7 +126,7 @@ public class Bus implements Serializable {
 
     @Override
     public String toString() {
-        return "logica.Bus[ numerochasisBus=" + numerochasisBus + " ]";
+        return numerochasisBus;
     }
     
 }
