@@ -20,11 +20,11 @@
                         <f:convertDateTime pattern="yyyy-MM-dd" />
                     </h:inputText>
                     <h:outputLabel value="#{bundle.CreateBusRutaLabel_ruta}" for="ruta" />
-                    <h:selectOneMenu id="ruta" value="#{busRutaController.selected.ruta}" title="#{bundle.CreateBusRutaTitle_ruta}" required="true" requiredMessage="#{bundle.CreateBusRutaRequiredMessage_ruta}">
+                    <h:selectOneMenu id="ruta" value="#{busRutaController.selected.busRutaPK.nombreRuta}" title="#{bundle.CreateBusRutaTitle_ruta}" required="true" requiredMessage="#{bundle.CreateBusRutaRequiredMessage_ruta}">
                         <f:selectItems value="#{rutaController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.CreateBusRutaLabel_bus}" for="bus" />
-                    <h:selectOneMenu id="bus" value="#{busRutaController.selected.bus}" title="#{bundle.CreateBusRutaTitle_bus}" required="true" requiredMessage="#{bundle.CreateBusRutaRequiredMessage_bus}">
+                    <h:selectOneMenu id="bus" value="#{busRutaController.selected.busRutaPK.numerochasisBus}" title="#{bundle.CreateBusRutaTitle_bus}" required="true" requiredMessage="#{bundle.CreateBusRutaRequiredMessage_bus}">
                         <f:selectItems value="#{busController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
