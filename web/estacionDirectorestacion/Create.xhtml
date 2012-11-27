@@ -20,12 +20,12 @@
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:inputText>
                     <h:outputLabel value="#{bundle.CreateEstacionDirectorestacionLabel_estacion}" for="estacion" />
-                    <h:selectOneMenu id="estacion" value="#{estacionDirectorestacionController.selected.estacion}" title="#{bundle.CreateEstacionDirectorestacionTitle_estacion}" required="true" requiredMessage="#{bundle.CreateEstacionDirectorestacionRequiredMessage_estacion}">
+                    <h:selectOneMenu id="estacion" value="#{estacionDirectorestacionController.selected.estacionDirectorestacionPK.nombreEstacion}" title="#{bundle.CreateEstacionDirectorestacionTitle_estacion}" required="true" requiredMessage="#{bundle.CreateEstacionDirectorestacionRequiredMessage_estacion}">
                         <f:selectItems value="#{estacionController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.CreateEstacionDirectorestacionLabel_empleado}" for="empleado" />
-                    <h:selectOneMenu id="empleado" value="#{estacionDirectorestacionController.selected.empleado}" title="#{bundle.CreateEstacionDirectorestacionTitle_empleado}" required="true" requiredMessage="#{bundle.CreateEstacionDirectorestacionRequiredMessage_empleado}">
-                        <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
+                    <h:selectOneMenu id="empleado" value="#{estacionDirectorestacionController.selected.estacionDirectorestacionPK.identificacionDirectorestacion}" title="#{bundle.CreateEstacionDirectorestacionTitle_empleado}" required="true" requiredMessage="#{bundle.CreateEstacionDirectorestacionRequiredMessage_empleado}">
+                        <f:selectItems value="#{empleadoController.itemsAvailableSelectDirector}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
                 <br />

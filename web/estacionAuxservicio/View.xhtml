@@ -20,9 +20,9 @@
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:outputText>
                     <h:outputText value="#{bundle.ViewEstacionAuxservicioLabel_estacion}"/>
-                    <h:outputText value="#{estacionAuxservicioController.selected.estacion}" title="#{bundle.ViewEstacionAuxservicioTitle_estacion}"/>
+                    <h:outputText value="#{estacionAuxservicioController.selected.estacionAuxservicioPK.nombreEstacion}" title="#{bundle.ViewEstacionAuxservicioTitle_estacion}"/>
                     <h:outputText value="#{bundle.ViewEstacionAuxservicioLabel_empleado}"/>
-                    <h:outputText value="#{estacionAuxservicioController.selected.empleado}" title="#{bundle.ViewEstacionAuxservicioTitle_empleado}"/>
+                    <h:outputText value="#{estacionAuxservicioController.selected.estacionAuxservicioPK.identificacionAuxservicio}" title="#{bundle.ViewEstacionAuxservicioTitle_empleado}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{estacionAuxservicioController.destroyAndView}" value="#{bundle.ViewEstacionAuxservicioDestroyLink}"/>

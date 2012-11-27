@@ -22,9 +22,9 @@
                     <h:outputText value="#{bundle.ViewConductorBusLabel_horario}"/>
                     <h:outputText value="#{conductorBusController.selected.horario}" title="#{bundle.ViewConductorBusTitle_horario}"/>
                     <h:outputText value="#{bundle.ViewConductorBusLabel_empleado}"/>
-                    <h:outputText value="#{conductorBusController.selected.empleado}" title="#{bundle.ViewConductorBusTitle_empleado}"/>
+                    <h:outputText value="#{conductorBusController.selected.conductorBusPK.identificacionConductor}" title="#{bundle.ViewConductorBusTitle_empleado}"/>
                     <h:outputText value="#{bundle.ViewConductorBusLabel_bus}"/>
-                    <h:outputText value="#{conductorBusController.selected.bus}" title="#{bundle.ViewConductorBusTitle_bus}"/>
+                    <h:outputText value="#{conductorBusController.selected.conductorBusPK.numerochasisBus}" title="#{bundle.ViewConductorBusTitle_bus}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{conductorBusController.destroyAndView}" value="#{bundle.ViewConductorBusDestroyLink}"/>

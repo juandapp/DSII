@@ -20,12 +20,12 @@
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:inputText>
                     <h:outputLabel value="#{bundle.EditEstacionDirectorestacionLabel_estacion}" for="estacion" />
-                    <h:selectOneMenu id="estacion" value="#{estacionDirectorestacionController.selected.estacion}" title="#{bundle.EditEstacionDirectorestacionTitle_estacion}" required="true" requiredMessage="#{bundle.EditEstacionDirectorestacionRequiredMessage_estacion}">
+                    <h:selectOneMenu id="estacion" value="#{estacionDirectorestacionController.selectedestacionDirectorestacionPK.nombreEstacion}" title="#{bundle.EditEstacionDirectorestacionTitle_estacion}" required="true" requiredMessage="#{bundle.EditEstacionDirectorestacionRequiredMessage_estacion}">
                         <f:selectItems value="#{estacionController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.EditEstacionDirectorestacionLabel_empleado}" for="empleado" />
-                    <h:selectOneMenu id="empleado" value="#{estacionDirectorestacionController.selected.empleado}" title="#{bundle.EditEstacionDirectorestacionTitle_empleado}" required="true" requiredMessage="#{bundle.EditEstacionDirectorestacionRequiredMessage_empleado}">
-                        <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
+                    <h:selectOneMenu id="empleado" value="#{estacionDirectorestacionController.selected.estacionDirectorestacionPK.identificacionDirectorestacion}" title="#{bundle.EditEstacionDirectorestacionTitle_empleado}" required="true" requiredMessage="#{bundle.EditEstacionDirectorestacionRequiredMessage_empleado}">
+                        <f:selectItems value="#{empleadoController.itemsAvailableSelectDirector}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
                 <h:commandLink action="#{estacionDirectorestacionController.update}" value="#{bundle.EditEstacionDirectorestacionSaveLink}"/>

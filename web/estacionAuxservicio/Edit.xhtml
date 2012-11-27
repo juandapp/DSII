@@ -20,12 +20,12 @@
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:inputText>
                     <h:outputLabel value="#{bundle.EditEstacionAuxservicioLabel_estacion}" for="estacion" />
-                    <h:selectOneMenu id="estacion" value="#{estacionAuxservicioController.selected.estacion}" title="#{bundle.EditEstacionAuxservicioTitle_estacion}" required="true" requiredMessage="#{bundle.EditEstacionAuxservicioRequiredMessage_estacion}">
+                    <h:selectOneMenu id="estacion" value="#{estacionAuxservicioController.selected.estacionAuxservicioPK.nombreEstacion}" title="#{bundle.EditEstacionAuxservicioTitle_estacion}" required="true" requiredMessage="#{bundle.EditEstacionAuxservicioRequiredMessage_estacion}">
                         <f:selectItems value="#{estacionController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.EditEstacionAuxservicioLabel_empleado}" for="empleado" />
-                    <h:selectOneMenu id="empleado" value="#{estacionAuxservicioController.selected.empleado}" title="#{bundle.EditEstacionAuxservicioTitle_empleado}" required="true" requiredMessage="#{bundle.EditEstacionAuxservicioRequiredMessage_empleado}">
-                        <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
+                    <h:selectOneMenu id="empleado" value="#{estacionAuxservicioController.selected.estacionAuxservicioPK.identificacionAuxservicio}" title="#{bundle.EditEstacionAuxservicioTitle_empleado}" required="true" requiredMessage="#{bundle.EditEstacionAuxservicioRequiredMessage_empleado}">
+                        <f:selectItems value="#{empleadoController.itemsAvailableSelectAuxServicio}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
                 <h:commandLink action="#{estacionAuxservicioController.update}" value="#{bundle.EditEstacionAuxservicioSaveLink}"/>

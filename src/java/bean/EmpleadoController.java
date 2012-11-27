@@ -183,18 +183,29 @@ public class EmpleadoController implements Serializable {
     public SelectItem[] getItemsAvailableSelectMany() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), false);
     }
+    
+    public SelectItem[] getItemsAvailableSelectOne() {
+        return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
+    }
 
     public SelectItem[] getItemsAvailableSelectConductor() {
-        //return JsfUtil.getSelectItemsConductor(ejbFacade.findAll(), true, "Conductor");
         return getSelectItemsConductor(ejbFacade.findAll(), true, "Conductor");
     }
     
-    public static SelectItem[] getSelectItemsConductor(List<?> entities, boolean selectOne, String conductor) {
+    public SelectItem[] getItemsAvailableSelectDirector() {
+        return getSelectItemsConductor(ejbFacade.findAll(), true, "Director Estacion");
+    }
+    
+    public SelectItem[] getItemsAvailableSelectAuxServicio() {
+        return getSelectItemsConductor(ejbFacade.findAll(), true, "Aux Servicio");
+    }
+    
+    public static SelectItem[] getSelectItemsConductor(List<?> entities, boolean selectOne, String empleado) {
         int contador = 0;
         for (Object x : entities) {
             Empleado em = new Empleado();
             em = (Empleado) x;
-            if (em.getTipoEmpleado().equals("Conductor")) {
+            if (em.getTipoEmpleado().equals(empleado)) {
                 contador++;
             }
         }
@@ -209,7 +220,7 @@ public class EmpleadoController implements Serializable {
         for (Object x : entities) {
             Empleado em = new Empleado();
             em = (Empleado) x;
-            if (em.getTipoEmpleado().equals("Conductor")) {
+            if (em.getTipoEmpleado().equals(empleado)) {
             itemss[i++] = new SelectItem(x, x.toString());
             }
         }
