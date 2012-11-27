@@ -26,7 +26,14 @@
                     <h:outputLabel value="#{bundle.CreateEmpleadoLabel_emailEmpleado}" for="emailEmpleado" />
                     <h:inputText id="emailEmpleado" value="#{empleadoController.selected.emailEmpleado}" title="#{bundle.CreateEmpleadoTitle_emailEmpleado}" />
                     <h:outputLabel value="#{bundle.CreateEmpleadoLabel_tipoEmpleado}" for="tipoEmpleado" />
-                    <h:inputText id="tipoEmpleado" value="#{empleadoController.selected.tipoEmpleado}" title="#{bundle.CreateEmpleadoTitle_tipoEmpleado}" />
+
+                    <h:selectOneMenu id="tipoEmpleado" value="#{empleadoController.selected.tipoEmpleado}" title="#{bundle.CreateBusRutaTitle_bus}" required="true" requiredMessage="#{bundle.CreateBusRutaRequiredMessage_bus}">
+                        <f:selectItem id="item1" itemLabel="Conductor" itemValue="Conductor" />
+                        <f:selectItem id="item2" itemLabel="Aux Servicio" itemValue="Aux Servicio" />                        
+                    </h:selectOneMenu>
+
+
+
                     <h:outputLabel value="#{bundle.CreateEmpleadoLabel_passwordEmpleado}" for="passwordEmpleado" />
                     <h:inputText id="passwordEmpleado" value="#{empleadoController.selected.passwordEmpleado}" title="#{bundle.CreateEmpleadoTitle_passwordEmpleado}" />
                 </h:panelGrid>

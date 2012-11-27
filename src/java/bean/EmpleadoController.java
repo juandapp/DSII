@@ -6,6 +6,7 @@ import bean.util.PaginationHelper;
 import controlador.EmpleadoFacade;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -47,7 +48,6 @@ public class EmpleadoController implements Serializable {
     public PaginationHelper getPagination() {
         if (pagination == null) {
             pagination = new PaginationHelper(10) {
-
                 @Override
                 public int getItemsCount() {
                     return getFacade().count();
@@ -184,9 +184,41 @@ public class EmpleadoController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), false);
     }
 
-    public SelectItem[] getItemsAvailableSelectOne() {
-        return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
+    public SelectItem[] getItemsAvailableSelectConductor() {
+        //return JsfUtil.getSelectItemsConductor(ejbFacade.findAll(), true, "Conductor");
+        return getSelectItemsConductor(ejbFacade.findAll(), true, "Conductor");
     }
+    
+    public static SelectItem[] getSelectItemsConductor(List<?> entities, boolean selectOne, String conductor) {
+        int contador = 0;
+        for (Object x : entities) {
+            Empleado em = new Empleado();
+            em = (Empleado) x;
+            if (em.getTipoEmpleado().equals("Conductor")) {
+                contador++;
+            }
+        }
+        int size = selectOne ? contador + 1 : contador;
+        //int size = selectOne ? entities.size() + 1 : entities.size();
+        SelectItem[] itemss = new SelectItem[size];
+        int i = 0;
+        if (selectOne) {
+            itemss[0] = new SelectItem("", "---");
+            i++;
+        }
+        for (Object x : entities) {
+            Empleado em = new Empleado();
+            em = (Empleado) x;
+            if (em.getTipoEmpleado().equals("Conductor")) {
+            itemss[i++] = new SelectItem(x, x.toString());
+            }
+        }
+        return itemss;
+
+    }
+
+    
+
 
     @FacesConverter(forClass = Empleado.class)
     public static class EmpleadoControllerConverter implements Converter {

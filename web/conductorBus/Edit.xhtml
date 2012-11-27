@@ -22,11 +22,11 @@
                     <h:outputLabel value="#{bundle.EditConductorBusLabel_horario}" for="horario" />
                     <h:inputText id="horario" value="#{conductorBusController.selected.horario}" title="#{bundle.EditConductorBusTitle_horario}" />
                     <h:outputLabel value="#{bundle.EditConductorBusLabel_empleado}" for="empleado" />
-                    <h:selectOneMenu id="empleado" value="#{conductorBusController.selected.empleado}" title="#{bundle.EditConductorBusTitle_empleado}" required="true" requiredMessage="#{bundle.EditConductorBusRequiredMessage_empleado}">
-                        <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
+                    <h:selectOneMenu id="empleado" value="#{conductorBusController.selected.conductorBusPK.identificacionConductor}" title="#{bundle.EditConductorBusTitle_empleado}" required="true" requiredMessage="#{bundle.EditConductorBusRequiredMessage_empleado}">
+                        <f:selectItems value="#{empleadoController.itemsAvailableSelectConductor}"/>
                     </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.EditConductorBusLabel_bus}" for="bus" />
-                    <h:selectOneMenu id="bus" value="#{conductorBusController.selected.bus}" title="#{bundle.EditConductorBusTitle_bus}" required="true" requiredMessage="#{bundle.EditConductorBusRequiredMessage_bus}">
+                    <h:selectOneMenu id="bus" value="#{conductorBusController.selected.conductorBusPK.numerochasisBus}" title="#{bundle.EditConductorBusTitle_bus}" required="true" requiredMessage="#{bundle.EditConductorBusRequiredMessage_bus}">
                         <f:selectItems value="#{busController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
