@@ -48,6 +48,7 @@ public class EmpleadoController implements Serializable {
     public PaginationHelper getPagination() {
         if (pagination == null) {
             pagination = new PaginationHelper(10) {
+
                 @Override
                 public int getItemsCount() {
                     return getFacade().count();
@@ -183,7 +184,7 @@ public class EmpleadoController implements Serializable {
     public SelectItem[] getItemsAvailableSelectMany() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), false);
     }
-    
+
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
@@ -191,15 +192,15 @@ public class EmpleadoController implements Serializable {
     public SelectItem[] getItemsAvailableSelectConductor() {
         return getSelectItemsConductor(ejbFacade.findAll(), true, "Conductor");
     }
-    
+
     public SelectItem[] getItemsAvailableSelectDirector() {
         return getSelectItemsConductor(ejbFacade.findAll(), true, "Director Estacion");
     }
-    
+
     public SelectItem[] getItemsAvailableSelectAuxServicio() {
         return getSelectItemsConductor(ejbFacade.findAll(), true, "Aux Servicio");
     }
-    
+
     public static SelectItem[] getSelectItemsConductor(List<?> entities, boolean selectOne, String empleado) {
         int contador = 0;
         for (Object x : entities) {
@@ -221,15 +222,12 @@ public class EmpleadoController implements Serializable {
             Empleado em = new Empleado();
             em = (Empleado) x;
             if (em.getTipoEmpleado().equals(empleado)) {
-            itemss[i++] = new SelectItem(x, x.toString());
+                itemss[i++] = new SelectItem(x, x.toString());
             }
         }
         return itemss;
 
     }
-
-    
-
 
     @FacesConverter(forClass = Empleado.class)
     public static class EmpleadoControllerConverter implements Converter {
@@ -266,5 +264,35 @@ public class EmpleadoController implements Serializable {
                 throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + EmpleadoController.class.getName());
             }
         }
+    }
+
+    public String validarLogin() {
+        Empleado emple = ejbFacade.find(current.getIdentificacionEmpleado());
+        String retorno = "";
+        if (emple != null) {
+
+            if (emple.getPasswordEmpleado().equals(current.getPasswordEmpleado())) {
+
+                if (emple.getTipoEmpleado().equals("Aux Servicio")) {
+                    retorno = "/indexEmpleados/indexAuxServicio";
+                }
+                if (emple.getTipoEmpleado().equals("Conductor")) {
+                    retorno = "/indexEmpleados/indexConductor";
+                }
+
+                if (emple.getTipoEmpleado().equals("Director Estacion")) {
+                    retorno = "/indexEmpleados/indexDirectorEstacion";
+                }
+
+                if (emple.getTipoEmpleado().equals("Gerente")) {
+                    retorno = "/indexEmpleados/indexGerente";
+                }
+                if (emple.getTipoEmpleado().equals("Director Operativo")) {
+                    retorno = "/indexEmpleados/indexDirectorOperativo";
+                }
+            }
+        }
+        return retorno;
+
     }
 }

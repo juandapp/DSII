@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -16,9 +17,9 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.EditEstacionAuxservicioLabel_estacionAuxservicioPK_fecha}" for="estacionAuxservicioPK_fecha" />
-                    <h:inputText id="estacionAuxservicioPK_fecha" value="#{estacionAuxservicioController.selected.estacionAuxservicioPK.fecha}" title="#{bundle.EditEstacionAuxservicioTitle_estacionAuxservicioPK_fecha}" required="true" requiredMessage="#{bundle.EditEstacionAuxservicioRequiredMessage_estacionAuxservicioPK_fecha}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
+
+                    <p:calendar value="#{estacionAuxservicioController.selected.estacionAuxservicioPK.fecha}" navigator="true" effect="explode"/>
+
                     <h:outputLabel value="#{bundle.EditEstacionAuxservicioLabel_estacion}" for="estacion" />
                     <h:selectOneMenu id="estacion" value="#{estacionAuxservicioController.selected.estacionAuxservicioPK.nombreEstacion}" title="#{bundle.EditEstacionAuxservicioTitle_estacion}" required="true" requiredMessage="#{bundle.EditEstacionAuxservicioRequiredMessage_estacion}">
                         <f:selectItems value="#{estacionController.itemsAvailableSelectOne}"/>
