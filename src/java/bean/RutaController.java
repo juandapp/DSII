@@ -70,7 +70,7 @@ public class RutaController implements Serializable {
     public String prepareView() {
         current = (Ruta) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+        return "List";
     }
 
     public String prepareCreate() {
@@ -100,7 +100,7 @@ public class RutaController implements Serializable {
         try {
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("Bundle/Bundle").getString("RutaUpdated"));
-            return "View";
+            return "List";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("Bundle/Bundle").getString("PersistenceErrorOccured"));
             return null;

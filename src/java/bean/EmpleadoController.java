@@ -96,12 +96,28 @@ public class EmpleadoController implements Serializable {
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
+    public String prepareEditDirectorOperativo() {
+        current = (Empleado) getItems().getRowData();
+        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        return "EditDirectorOperativo";
+    }
 
     public String update() {
         try {
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("Bundle/Bundle").getString("EmpleadoUpdated"));
             return "View";
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("Bundle/Bundle").getString("PersistenceErrorOccured"));
+            return null;
+        }
+    }
+    
+     public String updateDirectorEmpleado() {
+        try {
+            getFacade().edit(current);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("Bundle/Bundle").getString("EmpleadoUpdated"));
+            return "ListDirectorOperativo";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("Bundle/Bundle").getString("PersistenceErrorOccured"));
             return null;

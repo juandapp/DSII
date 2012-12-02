@@ -30,22 +30,20 @@
                     <h:selectOneMenu id="tipoEmpleado" value="#{empleadoController.selected.tipoEmpleado}" title="#{bundle.CreateBusRutaTitle_bus}" required="true" requiredMessage="#{bundle.CreateBusRutaRequiredMessage_bus}">
                         <f:selectItem id="item1" itemLabel="Conductor" itemValue="Conductor" />
                         <f:selectItem id="item2" itemLabel="Aux Servicio" itemValue="Aux Servicio" />
-                        <f:selectItem id="item3" itemLabel="Director Estacion" itemValue="Director Estacion" />     
-                        <f:selectItem id="item4" itemLabel="Director Operativo" itemValue="Director Operativo" />     
+                        <f:selectItem id="item3" itemLabel="Director Estacion" itemValue="Director Estacion" />      
                     </h:selectOneMenu>
 
                     <h:outputLabel value="#{bundle.EditEmpleadoLabel_passwordEmpleado}" for="passwordEmpleado" />
                     <h:inputText id="passwordEmpleado" value="#{empleadoController.selected.passwordEmpleado}" title="#{bundle.EditEmpleadoTitle_passwordEmpleado}" />
                 </h:panelGrid>
-                <h:commandLink action="#{empleadoController.update}" value="#{bundle.EditEmpleadoSaveLink}"/>
+                <h:commandLink action="#{empleadoController.updateDirectorEmpleado()}" value="#{bundle.EditEmpleadoSaveLink}"/>
                 <br />
                 <br />
-                <h:commandLink action="View" value="#{bundle.EditEmpleadoViewLink}" immediate="true"/>
                 <br />
-                <h:commandLink action="#{empleadoController.prepareList}" value="#{bundle.EditEmpleadoShowAllLink}" immediate="true"/>
+                <h:commandLink action="#{empleadoController.prepareEditDirectorOperativo}" value="#{bundle.EditEmpleadoShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:commandLink value="#{bundle.EditEmpleadoIndexLink}" action="/index" immediate="true" />
+                <h:commandLink value="Atras" action="/empleado/fachadaDirectorOperativo" immediate="true" />
             </h:form>
         </ui:define>
     </ui:composition>

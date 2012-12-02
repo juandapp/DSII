@@ -42,7 +42,6 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{rutaController.prepareView}" value="#{bundle.ListRutaViewLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{rutaController.prepareEdit}" value="#{bundle.ListRutaEditLink}"/>
                             <h:outputText value=" "/>
@@ -54,6 +53,7 @@
                 <h:commandLink action="#{rutaController.prepareCreate}" value="#{bundle.ListRutaCreateLink}"/>
                 <br />
                 <br />
+                <h:commandLink action="/ruta/fachadaDirectorOperativo" value="Atras" immediate="true"/>
             </h:form>
         </ui:define>
     </ui:composition>
