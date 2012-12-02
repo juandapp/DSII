@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -16,9 +17,7 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.EditBusRutaLabel_busRutaPK_fecha}" for="busRutaPK_fecha" />
-                    <h:inputText id="busRutaPK_fecha" value="#{busRutaController.selected.busRutaPK.fecha}" title="#{bundle.EditBusRutaTitle_busRutaPK_fecha}" required="true" requiredMessage="#{bundle.EditBusRutaRequiredMessage_busRutaPK_fecha}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
+                    <p:calendar value="#{estacionAuxservicioController.selected.estacionAuxservicioPK.fecha}" navigator="true" effect="explode"/>
                     <h:outputLabel value="#{bundle.EditBusRutaLabel_ruta}" for="ruta" />
                     <h:selectOneMenu id="ruta" value="#{busRutaController.selected.busRutaPK.nombreRuta}" title="#{bundle.EditBusRutaTitle_ruta}" required="true" requiredMessage="#{bundle.EditBusRutaRequiredMessage_ruta}">
                         <f:selectItems value="#{rutaController.itemsAvailableSelectOne}"/>

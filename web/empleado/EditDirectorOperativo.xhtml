@@ -36,11 +36,7 @@
                     <h:outputLabel value="#{bundle.EditEmpleadoLabel_passwordEmpleado}" for="passwordEmpleado" />
                     <h:inputText id="passwordEmpleado" value="#{empleadoController.selected.passwordEmpleado}" title="#{bundle.EditEmpleadoTitle_passwordEmpleado}" />
                 </h:panelGrid>
-                <h:commandLink action="#{empleadoController.updateDirectorEmpleado()}" value="#{bundle.EditEmpleadoSaveLink}"/>
-                <br />
-                <br />
-                <br />
-                <h:commandLink action="#{empleadoController.prepareEditDirectorOperativo}" value="#{bundle.EditEmpleadoShowAllLink}" immediate="true"/>
+                <h:commandLink action="#{empleadoController.updateDirectorEmpleado}" value="#{bundle.EditEmpleadoSaveLink}"/>
                 <br />
                 <br />
                 <h:commandLink value="Atras" action="/empleado/fachadaDirectorOperativo" immediate="true" />

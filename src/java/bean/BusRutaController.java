@@ -67,6 +67,11 @@ public class BusRutaController implements Serializable {
         recreateModel();
         return "List";
     }
+    
+    public String prepareListDirectorOperativo() {
+        recreateModel();
+        return "ListDirectorOperativo";
+    }
 
     public String prepareView() {
         current = (BusRuta) getItems().getRowData();
@@ -80,22 +85,49 @@ public class BusRutaController implements Serializable {
         selectedItemIndex = -1;
         return "Create";
     }
+    
+    public void limpiar() {
+        current = new BusRuta();
+    }
+    
+    public String prepareCreateDirectorOperativo() {
+        current = new BusRuta();
+        current.setBusRutaPK(new logica.BusRutaPK());
+        selectedItemIndex = -1;
+        return "CreateDirectorOperativo";
+    }
 
     public String create() {
         try {
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("Bundle/Bundle").getString("BusRutaCreated"));
-            return prepareCreate();
+            return prepareCreateDirectorOperativo();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("Bundle/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
 
+    public String createDirectorOperativo() {
+        try {
+            getFacade().create(current);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("Bundle/Bundle").getString("BusRutaCreated"));
+            return prepareCreateDirectorOperativo();
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("Bundle/Bundle").getString("PersistenceErrorOccured"));
+            return null;
+        }
+    }
+    
     public String prepareEdit() {
         current = (BusRuta) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
+    }
+    public String prepareEditDirectorOperativo() {
+        current = (BusRuta) getItems().getRowData();
+        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        return "EditDirectorOperativo";
     }
 
     public String update() {
@@ -103,6 +135,17 @@ public class BusRutaController implements Serializable {
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("Bundle/Bundle").getString("BusRutaUpdated"));
             return "View";
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("Bundle/Bundle").getString("PersistenceErrorOccured"));
+            return null;
+        }
+    }
+    
+    public String updateDirectorOperativo() {
+        try {
+            getFacade().edit(current);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("Bundle/Bundle").getString("BusRutaUpdated"));
+            return "ListDirectorOperativo";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("Bundle/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -175,11 +218,21 @@ public class BusRutaController implements Serializable {
         recreateModel();
         return "List";
     }
+    public String nextDirectorOperativo() {
+        getPagination().nextPage();
+        recreateModel();
+        return "ListDirectorOperativo";
+    }
 
     public String previous() {
         getPagination().previousPage();
         recreateModel();
         return "List";
+    }
+    public String previousDirectorOperativo() {
+        getPagination().previousPage();
+        recreateModel();
+        return "ListDirectorOperativo";
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {

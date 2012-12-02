@@ -28,13 +28,13 @@
                     </h:selectOneMenu>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{busRutaController.create}" value="#{bundle.CreateBusRutaSaveLink}" />
+                <h:commandLink action="#{busRutaController.createDirectorOperativo}" value="#{bundle.CreateBusRutaSaveLink}" />
                 <br />
                 <br />
-                <h:commandLink action="#{busRutaController.prepareList}" value="#{bundle.CreateBusRutaShowAllLink}" immediate="true"/>
+                <h:commandLink action="#{busRutaController.prepareListDirectorOperativo}" value="#{bundle.CreateBusRutaShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:commandLink value="#{bundle.CreateBusRutaIndexLink}" action="/index" immediate="true" />
+                <h:commandLink value="Menu" action="/indexEmpleados/indexDirectorOperativo" immediate="true" />
             </h:form>
         </ui:define>
     </ui:composition>

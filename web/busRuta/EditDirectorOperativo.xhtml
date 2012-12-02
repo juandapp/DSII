@@ -8,7 +8,7 @@
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundle.CreateBusRutaTitle}"></h:outputText>
+            <h:outputText value="#{bundle.EditBusRutaTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
@@ -16,25 +16,24 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateBusRutaLabel_busRutaPK_fecha}" for="busRutaPK_fecha" />
+                    <h:outputLabel value="#{bundle.EditBusRutaLabel_busRutaPK_fecha}" for="busRutaPK_fecha" />
                     <p:calendar value="#{busRutaController.selected.busRutaPK.fecha}" navigator="true" effect="explode"/>
-                    <h:outputLabel value="#{bundle.CreateBusRutaLabel_ruta}" for="ruta" />
-                    <h:selectOneMenu id="ruta" value="#{busRutaController.selected.busRutaPK.nombreRuta}" title="#{bundle.CreateBusRutaTitle_ruta}" required="true" requiredMessage="#{bundle.CreateBusRutaRequiredMessage_ruta}">
+                    <h:outputLabel value="#{bundle.EditBusRutaLabel_ruta}" for="ruta" />
+                    <h:selectOneMenu id="ruta" value="#{busRutaController.selected.busRutaPK.nombreRuta}" title="#{bundle.EditBusRutaTitle_ruta}" required="true" requiredMessage="#{bundle.EditBusRutaRequiredMessage_ruta}">
                         <f:selectItems value="#{rutaController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
-                    <h:outputLabel value="#{bundle.CreateBusRutaLabel_bus}" for="bus" />
-                    <h:selectOneMenu id="bus" value="#{busRutaController.selected.busRutaPK.numerochasisBus}" title="#{bundle.CreateBusRutaTitle_bus}" required="true" requiredMessage="#{bundle.CreateBusRutaRequiredMessage_bus}">
+                    <h:outputLabel value="#{bundle.EditBusRutaLabel_bus}" for="bus" />
+                    <h:selectOneMenu id="bus" value="#{busRutaController.selected.busRutaPK.numerochasisBus}" title="#{bundle.EditBusRutaTitle_bus}" required="true" requiredMessage="#{bundle.EditBusRutaRequiredMessage_bus}">
                         <f:selectItems value="#{busController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
-                <br />
-                <h:commandLink action="#{busRutaController.create}" value="#{bundle.CreateBusRutaSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{busRutaController.prepareList}" value="#{bundle.CreateBusRutaShowAllLink}" immediate="true"/>
+                <h:commandLink action="#{busRutaController.updateDirectorOperativo}" value="#{bundle.EditBusRutaSaveLink}"/>
                 <br />
                 <br />
-                <h:commandLink value="#{bundle.CreateBusRutaIndexLink}" action="/index" immediate="true" />
+                <h:commandLink action="#{busRutaController.prepareListDirectorOperativo}" value="#{bundle.EditBusRutaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="Menu" action="/indexEmpleados/indexDirectorOperativo" immediate="true" />
             </h:form>
         </ui:define>
     </ui:composition>

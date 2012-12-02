@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -16,9 +17,9 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateConductorBusLabel_conductorBusPK_fecha}" for="conductorBusPK_fecha" />
-                    <h:inputText id="conductorBusPK_fecha" value="#{conductorBusController.selected.conductorBusPK.fecha}" title="#{bundle.CreateConductorBusTitle_conductorBusPK_fecha}" required="true" requiredMessage="#{bundle.CreateConductorBusRequiredMessage_conductorBusPK_fecha}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
+                    
+                    <p:calendar value="#{conductorBusController.selected.conductorBusPK.fecha}" navigator="true" effect="explode"/>
+                    
                     <h:outputLabel value="#{bundle.CreateConductorBusLabel_horario}" for="horario" />
                     <h:inputText id="horario" value="#{conductorBusController.selected.horario}" title="#{bundle.CreateConductorBusTitle_horario}" />
                     <h:outputLabel value="#{bundle.CreateConductorBusLabel_empleado}" for="empleado" />

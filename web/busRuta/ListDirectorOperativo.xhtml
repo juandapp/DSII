@@ -18,8 +18,8 @@
                 <h:outputText escape="false" value="#{bundle.ListBusRutaEmpty}" rendered="#{busRutaController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{busRutaController.items.rowCount > 0}">
                     <h:outputText value="#{busRutaController.pagination.pageFirstItem + 1}..#{busRutaController.pagination.pageLastItem + 1}/#{busRutaController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{busRutaController.previous}" value="#{bundle.Previous} #{busRutaController.pagination.pageSize}" rendered="#{busRutaController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{busRutaController.next}" value="#{bundle.Next} #{busRutaController.pagination.pageSize}" rendered="#{busRutaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:commandLink action="#{busRutaController.previousDirectorOperativo}" value="#{bundle.Previous} #{busRutaController.pagination.pageSize}" rendered="#{busRutaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{busRutaController.nextDirectorOperativo()}" value="#{bundle.Next} #{busRutaController.pagination.pageSize}" rendered="#{busRutaController.pagination.hasNextPage}"/>&nbsp;
                     <h:dataTable value="#{busRutaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
@@ -45,19 +45,11 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{busRutaController.prepareView}" value="#{bundle.ListBusRutaViewLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{busRutaController.prepareEdit}" value="#{bundle.ListBusRutaEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{busRutaController.destroy}" value="#{bundle.ListBusRutaDestroyLink}"/>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{busRutaController.prepareCreate}" value="#{bundle.ListBusRutaCreateLink}"/>
-                <br />
-                <br />
-                <h:commandLink value="#{bundle.ListBusRutaIndexLink}" action="/index" immediate="true" />
+                <h:commandLink value="Menu" action="/indexEmpleados/indexDirectorOperativo" immediate="true" />
             </h:form>
         </ui:define>
     </ui:composition>

@@ -79,12 +79,30 @@ public class EmpleadoController implements Serializable {
         selectedItemIndex = -1;
         return "Create";
     }
+    
+    public String prepareCreateDirectorOperativo() {
+        current = new Empleado();
+        selectedItemIndex = -1;
+        return "CreateDirectorOperativo";
+    }
 
     public String create() {
         try {
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("Bundle/Bundle").getString("EmpleadoCreated"));
             return prepareCreate();
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("Bundle/Bundle").getString("PersistenceErrorOccured"));
+            return null;
+        }
+    }
+    
+    
+     public String createDirectorOperativo() {
+        try {
+            getFacade().create(current);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("Bundle/Bundle").getString("EmpleadoCreated"));
+            return prepareCreateDirectorOperativo();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("Bundle/Bundle").getString("PersistenceErrorOccured"));
             return null;
