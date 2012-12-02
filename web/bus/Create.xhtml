@@ -22,7 +22,10 @@
                     <h:outputLabel value="#{bundle.CreateBusLabel_numeropasajerosBus}" for="numeropasajerosBus" />
                     <h:inputText id="numeropasajerosBus" value="#{busController.selected.numeropasajerosBus}" title="#{bundle.CreateBusTitle_numeropasajerosBus}" />
                     <h:outputLabel value="#{bundle.CreateBusLabel_tipoBus}" for="tipoBus" />
-                    <h:inputText id="tipoBus" value="#{busController.selected.tipoBus}" title="#{bundle.CreateBusTitle_tipoBus}" />
+                    <h:selectOneMenu id="tipoBus" value="#{busController.selected.tipoBus}" title="#{bundle.CreateBusTitle_tipoBus}" required="true">
+                        <f:selectItem id="item1" itemLabel="Articulado" itemValue="Articulado" />
+                        <f:selectItem id="item2" itemLabel="Padron" itemValue="Padron" />                            
+                    </h:selectOneMenu>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{busController.create}" value="#{bundle.CreateBusSaveLink}" />
@@ -31,7 +34,7 @@
                 <h:commandLink action="#{busController.prepareList}" value="#{bundle.CreateBusShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:commandLink value="#{bundle.CreateBusIndexLink}" action="/index" immediate="true" />
+                <h:commandLink value="#{bundle.CreateBusIndexLink}" action="/indexEmpleados/indexDirectorOperativo" immediate="true" />
             </h:form>
         </ui:define>
     </ui:composition>
