@@ -50,11 +50,7 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{conductorBusController.prepareView}" value="#{bundle.ListConductorBusViewLink}"/>
-                            <h:outputText value=" "/>
                             <h:commandLink action="#{conductorBusController.prepareEdit}" value="#{bundle.ListConductorBusEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{conductorBusController.destroy}" value="#{bundle.ListConductorBusDestroyLink}"/>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
@@ -62,7 +58,7 @@
                 <h:commandLink action="#{conductorBusController.prepareCreate}" value="#{bundle.ListConductorBusCreateLink}"/>
                 <br />
                 <br />
-                <h:commandLink value="#{bundle.ListConductorBusIndexLink}" action="/index" immediate="true" />
+                <h:commandLink value="Menu" action="/indexEmpleados/indexDirectorOperativo" immediate="true" />
             </h:form>
         </ui:define>
     </ui:composition>

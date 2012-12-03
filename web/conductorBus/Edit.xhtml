@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -16,9 +17,7 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.EditConductorBusLabel_conductorBusPK_fecha}" for="conductorBusPK_fecha" />
-                    <h:inputText id="conductorBusPK_fecha" value="#{conductorBusController.selected.conductorBusPK.fecha}" title="#{bundle.EditConductorBusTitle_conductorBusPK_fecha}" required="true" requiredMessage="#{bundle.EditConductorBusRequiredMessage_conductorBusPK_fecha}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
+                    <p:calendar value="#{conductorBusController.selected.conductorBusPK.fecha}" navigator="true" effect="explode"/>
                     <h:outputLabel value="#{bundle.EditConductorBusLabel_horario}" for="horario" />
                     <h:inputText id="horario" value="#{conductorBusController.selected.horario}" title="#{bundle.EditConductorBusTitle_horario}" />
                     <h:outputLabel value="#{bundle.EditConductorBusLabel_empleado}" for="empleado" />
@@ -33,12 +32,10 @@
                 <h:commandLink action="#{conductorBusController.update}" value="#{bundle.EditConductorBusSaveLink}"/>
                 <br />
                 <br />
-                <h:commandLink action="View" value="#{bundle.EditConductorBusViewLink}" immediate="true"/>
-                <br />
                 <h:commandLink action="#{conductorBusController.prepareList}" value="#{bundle.EditConductorBusShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:commandLink value="#{bundle.EditConductorBusIndexLink}" action="/index" immediate="true" />
+                <h:commandLink value="Menu" action="/indexEmpleados/indexDirectorOperativo" immediate="true" />
             </h:form>
         </ui:define>
     </ui:composition>
