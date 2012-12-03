@@ -85,6 +85,11 @@ public class EmpleadoController implements Serializable {
         selectedItemIndex = -1;
         return "CreateDirectorOperativo";
     }
+    public String prepareCreateDirectorEstacion() {
+        current = new Empleado();
+        selectedItemIndex = -1;
+        return "CreateDirectorEstacion";
+    }
 
     public String create() {
         try {
@@ -103,6 +108,16 @@ public class EmpleadoController implements Serializable {
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("Bundle/Bundle").getString("EmpleadoCreated"));
             return prepareCreateDirectorOperativo();
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("Bundle/Bundle").getString("PersistenceErrorOccured"));
+            return null;
+        }
+    }
+     public String createDirectorEstacion() {
+        try {
+            getFacade().create(current);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("Bundle/Bundle").getString("EmpleadoCreated"));
+            return prepareCreateDirectorEstacion();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("Bundle/Bundle").getString("PersistenceErrorOccured"));
             return null;
