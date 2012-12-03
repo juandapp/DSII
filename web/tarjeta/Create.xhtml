@@ -20,7 +20,13 @@
                     <h:outputLabel value="#{bundle.CreateTarjetaLabel_saldo}" for="saldo" />
                     <h:inputText id="saldo" value="#{tarjetaController.selected.saldo}" title="#{bundle.CreateTarjetaTitle_saldo}" />
                     <h:outputLabel value="#{bundle.CreateTarjetaLabel_estado}" for="estado" />
-                    <h:inputText id="estado" value="#{tarjetaController.selected.estado}" title="#{bundle.CreateTarjetaTitle_estado}" />
+                    
+                    
+                    <h:selectOneMenu id="estado" value="#{tarjetaController.selected.estado}" title="#{bundle.CreateTarjetaTitle_estado}" required="true" requiredMessage="#{bundle.CreateBusRutaRequiredMessage_bus}">
+                        <f:selectItem id="item1" itemLabel="Activa" itemValue="activa" />
+                        <f:selectItem id="item2" itemLabel="Bloqueada" itemValue="desactiva" />
+                    </h:selectOneMenu>
+                    
                     <h:outputLabel value="#{bundle.CreateTarjetaLabel_tarjetaPersonalizada}" for="tarjetaPersonalizada" />
                     <h:selectOneMenu id="tarjetaPersonalizada" value="#{tarjetaController.selected.tarjetaPersonalizada}" title="#{bundle.CreateTarjetaTitle_tarjetaPersonalizada}" >
                         <f:selectItems value="#{tarjetaPersonalizadaController.itemsAvailableSelectOne}"/>
@@ -37,7 +43,7 @@
                 <h:commandLink action="#{tarjetaController.prepareList}" value="#{bundle.CreateTarjetaShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:commandLink value="#{bundle.CreateTarjetaIndexLink}" action="/index" immediate="true" />
+                <h:commandLink value="#{bundle.CreateTarjetaIndexLink}" action="/indexEmpleados/indexDirectorEstacion" immediate="true" />
             </h:form>
         </ui:define>
     </ui:composition>
