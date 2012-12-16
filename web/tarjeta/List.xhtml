@@ -38,23 +38,11 @@
                             </f:facet>
                             <h:outputText value="#{item.estado}"/>
                         </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTarjetaTitle_tarjetaPersonalizada}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.tarjetaPersonalizada}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTarjetaTitle_tarjetaGenerica}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.tarjetaGenerica}"/>
-                        </h:column>
+
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{tarjetaController.prepareView}" value="#{bundle.ListTarjetaViewLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{tarjetaController.prepareEdit}" value="#{bundle.ListTarjetaEditLink}"/>
                             <h:outputText value=" "/>
@@ -66,7 +54,7 @@
                 <h:commandLink action="#{tarjetaController.prepareCreate}" value="#{bundle.ListTarjetaCreateLink}"/>
                 <br />
                 <br />
-                <h:commandLink value="#{bundle.ListTarjetaIndexLink}" action="/indexEmpleados/indexDirectorEstacion" immediate="true" />
+                <h:commandLink value="Menu" action="/indexEmpleados/indexAuxServicio" immediate="true" />
             </h:form>
         </ui:define>
     </ui:composition>

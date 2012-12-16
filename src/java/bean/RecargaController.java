@@ -4,6 +4,7 @@ import logica.Recarga;
 import bean.util.JsfUtil;
 import bean.util.PaginationHelper;
 import controlador.RecargaFacade;
+import controlador.TarjetaFacade;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -17,11 +18,13 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import logica.Tarjeta;
 
 @ManagedBean(name = "recargaController")
 @SessionScoped
 public class RecargaController implements Serializable {
 
+    private controlador.TarjetaFacade tarjeta;
     private Recarga current;
     private DataModel items = null;
     @EJB
@@ -30,6 +33,8 @@ public class RecargaController implements Serializable {
     private int selectedItemIndex;
 
     public RecargaController() {
+        tarjeta = new TarjetaFacade();
+        
     }
 
     public Recarga getSelected() {
@@ -84,6 +89,7 @@ public class RecargaController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
+            tarjeta.create(current.getTarjeta());
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("Bundle/Bundle").getString("RecargaCreated"));
             return prepareCreate();
         } catch (Exception e) {

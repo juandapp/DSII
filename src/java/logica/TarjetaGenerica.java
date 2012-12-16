@@ -53,6 +53,7 @@ public class TarjetaGenerica implements Serializable {
 
     public void setTarjeta(Tarjeta tarjeta) {
         this.tarjeta = tarjeta;
+        pinGenerica = tarjeta.getPinTarjeta();
     }
 
     @Override

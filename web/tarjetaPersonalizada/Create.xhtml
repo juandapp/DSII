@@ -3,11 +3,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="#{bundle.CreateTarjetaPersonalizadaTitle}"></h:outputText>
+            <h:outputText value="Vender Tarjeta"></h:outputText>
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
@@ -15,18 +16,17 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateTarjetaPersonalizadaLabel_pinPersonalizada}" for="pinPersonalizada" />
-                    <h:inputText id="pinPersonalizada" value="#{tarjetaPersonalizadaController.selected.pinPersonalizada}" title="#{bundle.CreateTarjetaPersonalizadaTitle_pinPersonalizada}" required="true" requiredMessage="#{bundle.CreateTarjetaPersonalizadaRequiredMessage_pinPersonalizada}"/>
-                    <h:outputLabel value="#{bundle.CreateTarjetaPersonalizadaLabel_fecha}" for="fecha" />
-                    <h:inputText id="fecha" value="#{tarjetaPersonalizadaController.selected.fecha}" title="#{bundle.CreateTarjetaPersonalizadaTitle_fecha}" >
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
-                    <h:outputLabel value="#{bundle.CreateTarjetaPersonalizadaLabel_costo}" for="costo" />
-                    <h:inputText id="costo" value="#{tarjetaPersonalizadaController.selected.costo}" title="#{bundle.CreateTarjetaPersonalizadaTitle_costo}" />
                     <h:outputLabel value="#{bundle.CreateTarjetaPersonalizadaLabel_tarjeta}" for="tarjeta" />
                     <h:selectOneMenu id="tarjeta" value="#{tarjetaPersonalizadaController.selected.tarjeta}" title="#{bundle.CreateTarjetaPersonalizadaTitle_tarjeta}" required="true" requiredMessage="#{bundle.CreateTarjetaPersonalizadaRequiredMessage_tarjeta}">
                         <f:selectItems value="#{tarjetaController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
+                    
+                    <h:outputLabel value="#{bundle.CreateTarjetaPersonalizadaLabel_fecha}" for="fecha" />
+                    <p:calendar value="#{tarjetaPersonalizadaController.selected.fecha}" navigator="true" effect="explode"/>
+
+                    <h:outputLabel value="#{bundle.CreateTarjetaPersonalizadaLabel_costo}" for="costo" />
+                    <h:inputText id="costo" value="#{tarjetaPersonalizadaController.selected.costo}" title="#{bundle.CreateTarjetaPersonalizadaTitle_costo}" />
+                    
                     <h:outputLabel value="#{bundle.CreateTarjetaPersonalizadaLabel_identificacionPasajero}" for="identificacionPasajero" />
                     <h:selectOneMenu id="identificacionPasajero" value="#{tarjetaPersonalizadaController.selected.identificacionPasajero}" title="#{bundle.CreateTarjetaPersonalizadaTitle_identificacionPasajero}" >
                         <f:selectItems value="#{pasajeroController.itemsAvailableSelectOne}"/>
@@ -37,13 +37,12 @@
                     </h:selectOneMenu>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{tarjetaPersonalizadaController.create}" value="#{bundle.CreateTarjetaPersonalizadaSaveLink}" />
+                <h:commandLink action="#{tarjetaPersonalizadaController.create}" value="Vender" />
                 <br />
                 <br />
-                <h:commandLink action="#{tarjetaPersonalizadaController.prepareList}" value="#{bundle.CreateTarjetaPersonalizadaShowAllLink}" immediate="true"/>
+                <h:commandLink action="#{tarjetaPersonalizadaController.prepareList}" value="Lista Tarjetas Vendidas" immediate="true"/>
                 <br />
                 <br />
-                <h:commandLink value="#{bundle.CreateTarjetaPersonalizadaIndexLink}" action="/index" immediate="true" />
             </h:form>
         </ui:define>
     </ui:composition>

@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -16,21 +17,22 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateRecargaLabel_recargaPK_fecha}" for="recargaPK_fecha" />
-                    <h:inputText id="recargaPK_fecha" value="#{recargaController.selected.recargaPK.fecha}" title="#{bundle.CreateRecargaTitle_recargaPK_fecha}" required="true" requiredMessage="#{bundle.CreateRecargaRequiredMessage_recargaPK_fecha}">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
+                     <p:calendar value="#{recargaController.selected.recargaPK.fecha}" navigator="true" effect="explode"/>
+                    
                     <h:outputLabel value="#{bundle.CreateRecargaLabel_recargaPK_hora}" for="recargaPK_hora" />
                     <h:inputText id="recargaPK_hora" value="#{recargaController.selected.recargaPK.hora}" title="#{bundle.CreateRecargaTitle_recargaPK_hora}" required="true" requiredMessage="#{bundle.CreateRecargaRequiredMessage_recargaPK_hora}">
                         <f:convertDateTime pattern="HH:mm:ss" />
                     </h:inputText>
+                    
+                    
                     <h:outputLabel value="#{bundle.CreateRecargaLabel_valorrecarga}" for="valorrecarga" />
                     <h:inputText id="valorrecarga" value="#{recargaController.selected.valorrecarga}" title="#{bundle.CreateRecargaTitle_valorrecarga}" />
                     <h:outputLabel value="#{bundle.CreateRecargaLabel_tarjeta}" for="tarjeta" />
-                    <h:selectOneMenu id="tarjeta" value="#{recargaController.selected.tarjeta}" title="#{bundle.CreateRecargaTitle_tarjeta}" required="true" requiredMessage="#{bundle.CreateRecargaRequiredMessage_tarjeta}">
+                    <h:selectOneMenu id="tarjeta" value="#{recargaController.selected.recargaPK.pinTarjeta}" title="#{bundle.CreateRecargaTitle_tarjeta}" required="true" requiredMessage="#{bundle.CreateRecargaRequiredMessage_tarjeta}">
                         <f:selectItems value="#{tarjetaController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.CreateRecargaLabel_empleado}" for="empleado" />
-                    <h:selectOneMenu id="empleado" value="#{recargaController.selected.empleado}" title="#{bundle.CreateRecargaTitle_empleado}" required="true" requiredMessage="#{bundle.CreateRecargaRequiredMessage_empleado}">
+                    <h:selectOneMenu id="empleado" value="#{recargaController.selected.recargaPK.identificacionAuxservicio}" title="#{bundle.CreateRecargaTitle_empleado}" required="true" requiredMessage="#{bundle.CreateRecargaRequiredMessage_empleado}">
                         <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>

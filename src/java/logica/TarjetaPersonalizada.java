@@ -83,6 +83,7 @@ public class TarjetaPersonalizada implements Serializable {
 
     public void setTarjeta(Tarjeta tarjeta) {
         this.tarjeta = tarjeta;
+        this.pinPersonalizada = tarjeta.getPinTarjeta();
     }
 
     public Pasajero getIdentificacionPasajero() {

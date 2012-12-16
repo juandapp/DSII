@@ -15,8 +15,6 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateTarjetaGenericaLabel_pinGenerica}" for="pinGenerica" />
-                    <h:inputText id="pinGenerica" value="#{tarjetaGenericaController.selected.pinGenerica}" title="#{bundle.CreateTarjetaGenericaTitle_pinGenerica}" required="true" requiredMessage="#{bundle.CreateTarjetaGenericaRequiredMessage_pinGenerica}"/>
                     <h:outputLabel value="#{bundle.CreateTarjetaGenericaLabel_tarjeta}" for="tarjeta" />
                     <h:selectOneMenu id="tarjeta" value="#{tarjetaGenericaController.selected.tarjeta}" title="#{bundle.CreateTarjetaGenericaTitle_tarjeta}" required="true" requiredMessage="#{bundle.CreateTarjetaGenericaRequiredMessage_tarjeta}">
                         <f:selectItems value="#{tarjetaController.itemsAvailableSelectOne}"/>

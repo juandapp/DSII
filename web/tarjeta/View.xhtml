@@ -21,10 +21,6 @@
                     <h:outputText value="#{tarjetaController.selected.saldo}" title="#{bundle.ViewTarjetaTitle_saldo}"/>
                     <h:outputText value="#{bundle.ViewTarjetaLabel_estado}"/>
                     <h:outputText value="#{tarjetaController.selected.estado}" title="#{bundle.ViewTarjetaTitle_estado}"/>
-                    <h:outputText value="#{bundle.ViewTarjetaLabel_tarjetaPersonalizada}"/>
-                    <h:outputText value="#{tarjetaController.selected.tarjetaPersonalizada}" title="#{bundle.ViewTarjetaTitle_tarjetaPersonalizada}"/>
-                    <h:outputText value="#{bundle.ViewTarjetaLabel_tarjetaGenerica}"/>
-                    <h:outputText value="#{tarjetaController.selected.tarjetaGenerica}" title="#{bundle.ViewTarjetaTitle_tarjetaGenerica}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{tarjetaController.destroyAndView}" value="#{bundle.ViewTarjetaDestroyLink}"/>
@@ -37,7 +33,7 @@
                 <h:commandLink action="#{tarjetaController.prepareList}" value="#{bundle.ViewTarjetaShowAllLink}"/>
                 <br />
                 <br />
-                <h:commandLink value="#{bundle.ViewTarjetaIndexLink}" action="/indexEmpleados/indexDirectorEstacion" immediate="true" />
+                <h:commandLink value="menu" action="/indexEmpleados/indexAuxServicio" immediate="true" />
 
             </h:form>
         </ui:define>

@@ -26,15 +26,6 @@
                         <f:selectItem id="item1" itemLabel="Activa" itemValue="activa" />
                         <f:selectItem id="item2" itemLabel="Bloqueada" itemValue="desactiva" />
                     </h:selectOneMenu>
-                    
-                    <h:outputLabel value="#{bundle.CreateTarjetaLabel_tarjetaPersonalizada}" for="tarjetaPersonalizada" />
-                    <h:selectOneMenu id="tarjetaPersonalizada" value="#{tarjetaController.selected.tarjetaPersonalizada}" title="#{bundle.CreateTarjetaTitle_tarjetaPersonalizada}" >
-                        <f:selectItems value="#{tarjetaPersonalizadaController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                    <h:outputLabel value="#{bundle.CreateTarjetaLabel_tarjetaGenerica}" for="tarjetaGenerica" />
-                    <h:selectOneMenu id="tarjetaGenerica" value="#{tarjetaController.selected.tarjetaGenerica}" title="#{bundle.CreateTarjetaTitle_tarjetaGenerica}" >
-                        <f:selectItems value="#{tarjetaGenericaController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{tarjetaController.create}" value="#{bundle.CreateTarjetaSaveLink}" />
@@ -43,7 +34,7 @@
                 <h:commandLink action="#{tarjetaController.prepareList}" value="#{bundle.CreateTarjetaShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:commandLink value="#{bundle.CreateTarjetaIndexLink}" action="/indexEmpleados/indexDirectorEstacion" immediate="true" />
+                <h:commandLink value="#{bundle.CreateTarjetaIndexLink}" action="/indexEmpleados/indexAuxServicio" immediate="true" />
             </h:form>
         </ui:define>
     </ui:composition>
