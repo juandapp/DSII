@@ -26,11 +26,11 @@
                     <h:outputLabel value="#{bundle.EditRecargaLabel_valorrecarga}" for="valorrecarga" />
                     <h:inputText id="valorrecarga" value="#{recargaController.selected.valorrecarga}" title="#{bundle.EditRecargaTitle_valorrecarga}" />
                     <h:outputLabel value="#{bundle.EditRecargaLabel_tarjeta}" for="tarjeta" />
-                    <h:selectOneMenu id="tarjeta" value="#{recargaController.selected.tarjeta}" title="#{bundle.EditRecargaTitle_tarjeta}" required="true" requiredMessage="#{bundle.EditRecargaRequiredMessage_tarjeta}">
+                    <h:selectOneMenu id="tarjeta" value="#{recargaController.selected.recargaPK.pinTarjeta}" title="#{bundle.EditRecargaTitle_tarjeta}" required="true" requiredMessage="#{bundle.EditRecargaRequiredMessage_tarjeta}">
                         <f:selectItems value="#{tarjetaController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.EditRecargaLabel_empleado}" for="empleado" />
-                    <h:selectOneMenu id="empleado" value="#{recargaController.selected.empleado}" title="#{bundle.EditRecargaTitle_empleado}" required="true" requiredMessage="#{bundle.EditRecargaRequiredMessage_empleado}">
+                    <h:selectOneMenu id="empleado" value="#{recargaController.selected.recargaPK.identificacionAuxservicio}" title="#{bundle.EditRecargaTitle_empleado}" required="true" requiredMessage="#{bundle.EditRecargaRequiredMessage_empleado}">
                         <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>

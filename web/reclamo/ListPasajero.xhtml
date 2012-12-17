@@ -70,13 +70,16 @@
                             </f:facet>
                             <h:outputText value="#{item.identificacionAuxservicio}"/>
                         </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{reclamoController.prepareEdit}" value="Solucionar"/>
+                        </h:column>
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{reclamoController.prepareCreate}" value="#{bundle.ListReclamoCreateLink}"/>
-                <br />
-                <br />
-                <h:commandLink value="Menu" action="/indexEmpleados/indexAuxServicio" immediate="true" />
+                <h:commandLink value="Menu" action="/indexEmpleados/indexPasajero" immediate="true" />
             </h:form>
         </ui:define>
     </ui:composition>

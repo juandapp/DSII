@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -22,13 +23,17 @@
                     <h:outputLabel value="#{bundle.CreateReclamoLabel_descripcionReclamo}" for="descripcionReclamo" />
                     <h:inputText id="descripcionReclamo" value="#{reclamoController.selected.descripcionReclamo}" title="#{bundle.CreateReclamoTitle_descripcionReclamo}" />
                     <h:outputLabel value="#{bundle.CreateReclamoLabel_solucionReclamo}" for="solucionReclamo" />
-                    <h:inputText id="solucionReclamo" value="#{reclamoController.selected.solucionReclamo}" title="#{bundle.CreateReclamoTitle_solucionReclamo}" />
+                    <h:selectOneMenu id="solucionReclamo" value="#{reclamoController.selected.solucionReclamo}" title="#{bundle.CreateReclamoTitle_solucionReclamo}" >
+                        <f:selectItem id="item1" itemLabel="Ninguna" itemValue="Ninguna" />
+                    </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.CreateReclamoLabel_estadoReclamo}" for="estadoReclamo" />
-                    <h:inputText id="estadoReclamo" value="#{reclamoController.selected.estadoReclamo}" title="#{bundle.CreateReclamoTitle_estadoReclamo}" />
+                    <h:selectOneMenu id="estadoReclamo" value="#{reclamoController.selected.estadoReclamo}" title="#{bundle.CreateReclamoTitle_estadoReclamo}" >
+                        <f:selectItem id="item2" itemLabel="En Proceso" itemValue="En Proceso" />
+                        <!--<f:selectItem id="item2" itemLabel="Solucionado" itemValue="Solucionado" />-->
+                    </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.CreateReclamoLabel_fechaReclamo}" for="fechaReclamo" />
-                    <h:inputText id="fechaReclamo" value="#{reclamoController.selected.fechaReclamo}" title="#{bundle.CreateReclamoTitle_fechaReclamo}" >
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
+                    <p:calendar value="#{reclamoController.selected.fechaReclamo}" navigator="true" effect="explode"/>
+                    
                     <h:outputLabel value="#{bundle.CreateReclamoLabel_identificacionPasajero}" for="identificacionPasajero" />
                     <h:selectOneMenu id="identificacionPasajero" value="#{reclamoController.selected.identificacionPasajero}" title="#{bundle.CreateReclamoTitle_identificacionPasajero}" >
                         <f:selectItems value="#{pasajeroController.itemsAvailableSelectOne}"/>
@@ -45,7 +50,7 @@
                 <h:commandLink action="#{reclamoController.prepareList}" value="#{bundle.CreateReclamoShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:commandLink value="#{bundle.CreateReclamoIndexLink}" action="/index" immediate="true" />
+                <h:commandLink value="Menu" action="/indexEmpleados/indexAuxServicio" immediate="true" />
             </h:form>
         </ui:define>
     </ui:composition>

@@ -64,7 +64,7 @@ public class ReclamoController implements Serializable {
 
     public String prepareList() {
         recreateModel();
-        return "List";
+        return "ListDirectorEstacion";
     }
 
     public String prepareView() {
@@ -100,7 +100,7 @@ public class ReclamoController implements Serializable {
         try {
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("Bundle/Bundle").getString("ReclamoUpdated"));
-            return "View";
+            return "/indexEmpelados/indexDirectorEstacion";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("Bundle/Bundle").getString("PersistenceErrorOccured"));
             return null;

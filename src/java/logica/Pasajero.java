@@ -138,7 +138,7 @@ public class Pasajero implements Serializable {
 
     @Override
     public String toString() {
-        return "logica.Pasajero[ identificacionPasajero=" + identificacionPasajero + " ]";
+        return identificacionPasajero;
     }
     
 }

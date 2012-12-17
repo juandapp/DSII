@@ -24,17 +24,18 @@ import logica.Tarjeta;
 @SessionScoped
 public class RecargaController implements Serializable {
 
-    private controlador.TarjetaFacade tarjeta;
+   
     private Recarga current;
-    private DataModel items = null;
+    private Tarjeta tarje;
+    private DataModel items = null; 
+    @EJB
+    private controlador.TarjetaFacade tarjeta;
     @EJB
     private controlador.RecargaFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
     public RecargaController() {
-        tarjeta = new TarjetaFacade();
-        
     }
 
     public Recarga getSelected() {
@@ -89,7 +90,11 @@ public class RecargaController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
-            tarjeta.create(current.getTarjeta());
+            
+//            tarje = new Tarjeta();
+//            tarje.setSaldo(current.getTarjeta().get);
+//            find.setSaldo(200000);
+//            tarjeta.edit(find);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("Bundle/Bundle").getString("RecargaCreated"));
             return prepareCreate();
         } catch (Exception e) {
