@@ -105,7 +105,7 @@ public class ReclamoController implements Serializable {
         try {
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("Bundle/Bundle").getString("ReclamoUpdated"));
-            return "/indexEmpelados/indexDirectorEstacion";
+            return "ListDirectorEstacion";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("Bundle/Bundle").getString("PersistenceErrorOccured"));
             return null;

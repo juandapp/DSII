@@ -22,7 +22,10 @@
                     <h:outputLabel value="#{bundle.EditBusLabel_numeropasajerosBus}" for="numeropasajerosBus" />
                     <h:inputText id="numeropasajerosBus" value="#{busController.selected.numeropasajerosBus}" title="#{bundle.EditBusTitle_numeropasajerosBus}" />
                     <h:outputLabel value="#{bundle.EditBusLabel_tipoBus}" for="tipoBus" />
-                    <h:inputText id="tipoBus" value="#{busController.selected.tipoBus}" title="#{bundle.EditBusTitle_tipoBus}" />
+                    <h:selectOneMenu id="tipoBus" value="#{busController.selected.tipoBus}" title="#{bundle.CreateBusTitle_tipoBus}" required="true">
+                        <f:selectItem id="item1" itemLabel="Articulado" itemValue="Articulado" />
+                        <f:selectItem id="item2" itemLabel="Padron" itemValue="Padron" />                            
+                    </h:selectOneMenu>
                 </h:panelGrid>
                 <h:commandLink action="#{busController.update}" value="#{bundle.EditBusSaveLink}"/>
                 <br />

@@ -8,9 +8,10 @@
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.CreateEmpleadoTitle}"></h:outputText>
-            #{empleadoController.prepareCreate()}
+            
         </ui:define>
         <ui:define name="body">
+            #{empleadoController.prepareCreate()}
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
