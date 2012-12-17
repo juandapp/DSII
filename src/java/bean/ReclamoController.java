@@ -61,6 +61,11 @@ public class ReclamoController implements Serializable {
         }
         return pagination;
     }
+    
+        public String prepareList2() {
+        recreateModel();
+        return "List";
+    }
 
     public String prepareList() {
         recreateModel();
